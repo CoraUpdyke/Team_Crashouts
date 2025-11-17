@@ -43,12 +43,15 @@ public class PlayerController : MonoBehaviour
         //If not: lose a life
         //lives = lives - 1;
         //lives -= 1;
-        if (isShieldActive == true);
+        if (isShieldActive == true)
         {
             shieldPrefab.SetActive(false);
             isShieldActive = false;
         }
-        lives--;
+        else if (isShieldActive == false) 
+        {
+            lives -= 1;
+        }
         gameManager.ChangeLivesText(lives);
         if (lives == 0)
         {
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
                     //Do I already have a shield?
                     //If yes: do nothing
                     //If not: activate the shield's visibility
-                    if (isShieldActive == false) ;
+                    if (isShieldActive == false) 
                     {
                         shieldPrefab.SetActive(true);
                         isShieldActive = true;
