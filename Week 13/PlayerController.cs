@@ -47,8 +47,10 @@ public class PlayerController : MonoBehaviour
         {
             shieldPrefab.SetActive(false);
             isShieldActive = false;
+            gameManager.ManagePowerupText(0);
+            gameManager.PlaySound(2);
         }
-        else if (isShieldActive == false) 
+        else if (isShieldActive == false)
         {
             lives -= 1;
         }
@@ -80,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
-        if(whatDidIHit.tag == "Powerup")
+        if (whatDidIHit.tag == "Powerup")
         {
             Destroy(whatDidIHit.gameObject);
             int whichPowerup = Random.Range(1, 5);
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour
                     //Do I already have a shield?
                     //If yes: do nothing
                     //If not: activate the shield's visibility
-                    if (isShieldActive == false) 
+                    if (isShieldActive == false)
                     {
                         shieldPrefab.SetActive(true);
                         isShieldActive = true;
@@ -122,9 +124,9 @@ public class PlayerController : MonoBehaviour
 
     void Shooting()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            switch(weaponType)
+            switch (weaponType)
             {
                 case 1:
                     Instantiate(bulletPrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
